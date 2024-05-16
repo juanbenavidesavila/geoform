@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -25,8 +26,8 @@ SECRET_KEY = 'B_ijTBstpkvJ7bQJ9aYnJhLIUVRhPHcK12xhXjbuBvY'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [".replit.dev", ".replit.app"]
-CSRF_TRUSTED_ORIGINS = ["https://*.replit.dev", "https://*.replit.app"]
+ALLOWED_HOSTS = ["*"]
+CSRF_TRUSTED_ORIGINS = ["*"]
 
 # Application definition
 
@@ -69,6 +70,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'django_project.wsgi.application'
+WSGI_APPLICATION = 'django_project.wsgi.app'
 
 
 # Database
@@ -110,6 +112,8 @@ TIME_ZONE = 'UTC'
 
 USE_I18N = True
 
+USE_L10N = True
+
 USE_TZ = True
 
 
@@ -117,6 +121,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = 'static/'
+
+STATICFILES_DIRS = [os.path.join(BASE_DIR, "django_project/static")]
+
+STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles", "static")
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
